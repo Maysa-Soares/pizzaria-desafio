@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Cardápio - Pizzaria</title>
+    <link rel="stylesheet" href="../styles/casdapio.css">
+</head>
+<body>
+    <header>
+        <img src="../img/logo.jpg" alt="Logotipo da Pizzaria" class="logo">
+        <h1>Cadastro de Cardápio</h1>
+    </header>
+    <main>
+        <form action="submit.html" method="post" class="cadastro-form">
+            <label for="nome-pizza">Nome da Pizza:</label>
+            <input type="text" id="nome-pizza" name="nome-pizza" required>
+
+            <label for="ingredientes">Observações:</label>
+            <textarea id="ingredientes" name="ingredientes" rows="4" required></textarea>
+
+            <label for="categoria">Categoria:</label>
+            <select id="categoria" name="categoria" onchange="mostrarPreco()" required>
+                <option value="">Selecione uma categoria</option>
+                <option value="tradicional">Tradicional</option>
+                <option value="especial">Especial</option>
+                <option value="doce">Doce</option>
+            </select>
+
+            <div id="preco-container" style="display: none;">
+                <label for="preco">Preço:</label>
+                <input type="number" id="preco" name="preco" step="0.01" required>
+            </div>
+
+            <input type="submit" value="Cadastrar">
+        </form>
+    </main>
+    <script>
+        function mostrarPreco() {
+            var categoria = document.getElementById("categoria").value;
+            var precoContainer = document.getElementById("preco-container");
+            var precoInput = document.getElementById("preco");
+
+            if (categoria) {
+                precoContainer.style.display = "block";
+
+                switch (categoria) {
+                    case "tradicional":
+                        precoInput.value = "40.00";
+                        break;
+                    case "especial":
+                        precoInput.value = "60.00";
+                        break;
+                    case "doce":
+                        precoInput.value = "55.00";
+                        break;
+                    default:
+                        precoInput.value = "";
+                }
+            } else {
+                precoContainer.style.display = "none";
+                precoInput.value = "";
+            }
+        }
+    </script>
+</body>
+</html>
