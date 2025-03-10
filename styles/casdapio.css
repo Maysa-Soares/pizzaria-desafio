@@ -23,6 +23,17 @@ header {
     margin: 0 auto;
 }
 
+nav a {
+    color: rgb(204, 241, 210);
+    text-decoration: none;
+    transition: color 0.1s ease;
+}
+
+
+nav a:active {
+    color: #2c6646;
+}
+
 main {
     display: flex;
     justify-content: center;
